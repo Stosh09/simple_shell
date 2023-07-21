@@ -71,8 +71,8 @@ unsigned int check_match(char c, const char *str);
 char *_strcpy(char *dest, char *src);
 
 /* m_get_commands.c files */
-char **get_commands(char *buffer, char *delimiter);
-char **get_aliases(char *buffer, char *delimeter);
+char **getCommand(char *buffer, char *delim);
+char **getAlias(char *buffer, char *delim);
 int char_found(char c, const char *del);
 char *alias_strtok(char *str, const char *del);
 
