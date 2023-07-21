@@ -49,10 +49,10 @@ typedef struct builtin_functions
 } builtin_s;
 
 /* m_shell.c files */
-void free_commands(inputs_s *vars);
+void freesCommands(inputs_s *vars);
 
 /* m_environment.c files */
-char **copy_env(char **env);
+char **copyEnvironment(char **env);
 void free_env(char **env);
 void add_key(inputs_s *vars);
 char **find_key(char **env, char *key);
@@ -85,7 +85,7 @@ char **_realloc(char **ptr, size_t old_size, size_t new_size);
 char *_malloc(size_t size);
 
 /* m_process.c file */
-void process_input(char *input, inputs_s *vars);
+void processInput(char *input, inputs_s *vars);
 int run_command(inputs_s *vars, char *cmd_str);
 char get_operator(char *command, unsigned int *index);
 void check_logical_ops(inputs_s *vars, char *cmd_str);
@@ -106,7 +106,7 @@ void print_error(inputs_s *vars, char *msg);
 ssize_t _puts(char *str);
 void _puts2(char *str);
 void print_error2(inputs_s *vars, char *msg);
-void print_prompt(void);
+void printsPrompt(void);
 
 /* m_char_conversion.c*/
 char *_uitoa(unsigned int count);
