@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <string.h>
+
 /**
  * struct inputs - variables
  * @av: command line arguments
