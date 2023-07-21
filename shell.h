@@ -26,7 +26,7 @@
 
 typedef struct inputs
 {
-    char **av;
+	char **av;
 	char *buffer;
 	char **env;
 	size_t count;
@@ -38,14 +38,14 @@ typedef struct inputs
 	char **aliases;
 } inputs_s;
 /**
- * struct builtins - struct for the builtin functions
+ * struct builtin_functions - struct for the builtin functions
  * @name: name of builtin command
  * @f: function for corresponding builtin
  */
 typedef struct builtin_functions
 {
-    char *name;
-    void (*f)(inputs_s *vars);
+	char *name;
+	void (*f)(inputs_s *vars);
 } builtin_s;
 
 /* m_shell.c files */
