@@ -84,12 +84,12 @@ void _setenv(inputs_s *vars)
 		vars->status = 2;
 		return;
 	}
-	key = find_key(vars->env, vars->av[1]);
+	key = findKey(vars->env, vars->av[1]);
 	if (key == NULL)
-		add_key(vars);
+		addKey(vars);
 	else
 	{
-		var = add_value(vars->av[1], vars->av[2]);
+		var = addValue(vars->av[1], vars->av[2]);
 		if (var == NULL)
 		{
 			print_error(vars, NULL);
@@ -118,7 +118,7 @@ void _unsetenv(inputs_s *vars)
 		vars->status = 2;
 		return;
 	}
-	key = find_key(vars->env, vars->av[1]);
+	key = findKey(vars->env, vars->av[1]);
 	if (key == NULL)
 	{
 		print_error(vars, ": No variable to unset\n");

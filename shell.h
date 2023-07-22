@@ -55,10 +55,10 @@ void freesCommands(inputs_s *vars);
 
 /* m_environment.c files */
 char **copyEnvironment(char **env);
-void free_env(char **env);
-void add_key(inputs_s *vars);
-char **find_key(char **env, char *key);
-char *add_value(char *key, char *value);
+void freeEnvironment(char **env);
+void addKey(inputs_s *vars);
+char **findKey(char **env, char *key);
+char *addValue(char *key, char *val);
 
 /* m_helper.c files */
 char *_strdup(char *strtodup);
