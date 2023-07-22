@@ -93,8 +93,8 @@ char get_operator(char *command, unsigned int *index);
 void check_logical_ops(inputs_s *vars, char *cmd_str);
 
 /* m_builtins.c files */
-int exe_builtin(inputs_s *vars);
-void my_exit(inputs_s *vars);
+int exeBuiltin(inputs_s *vars);
+void myExit(inputs_s *vars);
 void _env(inputs_s *vars);
 void _setenv(inputs_s *vars);
 void _unsetenv(inputs_s *vars);
