@@ -49,7 +49,7 @@ char **getCommand(char *input, char *delim)
 
 char **getAlias(char *input, char *delim)
 {
-	char *token = NULL;
+	char **token = NULL;
 	size_t i = 0, buffsize = 1024;
 
 	if (input == NULL)
@@ -60,7 +60,7 @@ char **getAlias(char *input, char *delim)
 		perror("Error");
 		return (NULL);
 	}
-	token = alias_strtok(input, delim);
+	token[i] = alias_strtok(input, delim);
 	while (token[i])
 	{
 		i++;
