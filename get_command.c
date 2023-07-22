@@ -11,11 +11,11 @@
 char **getCommand(char *input, char *delim)
 {
 	char **token = NULL;
-	size_t i = 0, buffsize = 1024;
+	size_t i = 0, buffersize = 1024;
 
 	if (input == NULL)
 		return (NULL);
-	token = malloc(sizeof(char *) * buffsize);
+	token = malloc(sizeof(char *) * buffersize);
 	if (token == NULL)
 	{
 		perror("Error");
@@ -25,9 +25,9 @@ char **getCommand(char *input, char *delim)
 	while (token[i])
 	{
 		i++;
-		if (i == buffsize)
+		if (i == buffersize)
 		{
-			token = _realloc(token, buffsize, 2 * buffsize);
+			token = _realloc(token, buffersize, 2 * buffersize);
 			if (token == NULL)
 			{
 				perror("Error");
@@ -50,11 +50,11 @@ char **getCommand(char *input, char *delim)
 char **getAlias(char *input, char *delim)
 {
 	char **token = NULL;
-	size_t i = 0, buffsize = 1024;
+	size_t i = 0, buffersize = 1024;
 
 	if (input == NULL)
 		return (NULL);
-	token = malloc(sizeof(char *) * buffsize);
+	token = malloc(sizeof(char *) * buffersize);
 	if (token == NULL)
 	{
 		perror("Error");
@@ -64,9 +64,9 @@ char **getAlias(char *input, char *delim)
 	while (token[i])
 	{
 		i++;
-		if (i == buffsize)
+		if (i == buffersize)
 		{
-			token = _realloc(token, buffsize, 2 * buffsize);
+			token = _realloc(token, buffersize, 2 * buffersize);
 			if (token == NULL)
 			{
 				perror("Error");
@@ -135,12 +135,12 @@ char *aliasStrtok(char *str, const char *del)
 
 int charFound(char c, const char *del)
 {
-	int j = 0;
+	int x = 0;
 
-	for (j = 0; del[j]; j++)
+	for (x = 0; del[x]; x++)
 	{
-		if (c == del[j])
-			return (j);
+		if (c == del[x])
+			return (x);
 	}
 	return (-1);
 }

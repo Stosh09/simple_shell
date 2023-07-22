@@ -6,30 +6,30 @@
 
 void alias(inputs_s *vars)
 {
-	unsigned int i = 0, k = 0;
+	unsigned int a = 0, b = 0;
 
 	if (vars->av[1] == NULL)
 		print_vars(vars->aliases);
 	else
 	{
-		while (vars->av[k])
+		while (vars->av[b])
 		{
-			if (strchr(vars->av[k], '=') != NULL)
-				updateAlias(vars, k);
+			if (strchr(vars->av[b], '=') != NULL)
+				updateAlias(vars, b);
 			else
 			{
-				while (vars->aliases[i])
+				while (vars->aliases[a])
 				{
-					if (check_name_similarity(vars->aliases[i], vars->av[k]))
+					if (check_name_similarity(vars->aliases[a], vars->av[b]))
 					{
-						_puts(vars->aliases[i]);
+						_puts(vars->aliases[a]);
 						_puts("\n");
 						break;
 					}
-					i++;
+					a++;
 				}
 			}
-			k++;
+			b++;
 		}
 	}
 	vars->status = 0;
@@ -44,11 +44,11 @@ void alias(inputs_s *vars)
 
 int check_name_similarity(char *an_alias, char *input)
 {
-	unsigned int len = 0, i = 0;
+	unsigned int len = 0, a = 0;
 
-	for (i = 0; input[i]; i++)
+	for (a = 0; input[a]; a++)
 	{
-		if (input[i] == '=')
+		if (input[a] == '=')
 			break;
 		len++;
 	}
@@ -60,36 +60,36 @@ int check_name_similarity(char *an_alias, char *input)
 /**
  * updateAlias-updates alias
  * @vars: contains struct members
- * @k: vars->av at the position
+ * @b: vars->av at the position
  */
-void updateAlias(inputs_s *vars, unsigned int k)
+void updateAlias(inputs_s *vars, unsigned int b)
 {
-	unsigned int i = 0;
+	unsigned int a = 0;
 
 	if (vars->aliases == NULL)
 		vars->aliases = malloc(sizeof(char *) * 2);
 	else
 	{
-		while (vars->aliases[i])
+		while (vars->aliases[a])
 		{
-			if (check_name_similarity(vars->aliases[i], vars->aliases[k]))
+			if (check_name_similarity(vars->aliases[a], vars->aliases[b]))
 			{
-				free(vars->aliases[i]);
-				vars->aliases[i] = storeAlias(vars->av[k]);
+				free(vars->aliases[a]);
+				vars->aliases[a] = storeAlias(vars->av[b]);
 				return;
 			}
-			i++;
+			a++;
 		}
-		vars->aliases = _realloc(vars->aliases, i, i + 2);
+		vars->aliases = _realloc(vars->aliases, a, a + 2);
 	}
 	if (vars->aliases == NULL)
 	{
 		perror("Error");
 		exit(1);
 	}
-	vars->aliases[i] = storeAlias(vars->av[k]);
-	i++;
-	vars->aliases[i] = NULL;
+	vars->aliases[a] = storeAlias(vars->av[b]);
+	a++;
+	vars->aliases[a] = NULL;
 }
 
 /**
@@ -100,26 +100,26 @@ void updateAlias(inputs_s *vars, unsigned int k)
 
 char *storeAlias(char *str)
 {
-	unsigned int i = 0, j = 0;
+	unsigned int a = 0, c = 0;
 	char copy[1024];
 
 	if (str != NULL)
 	{
-		for (i = 0, j = 0; str[i]; i++)
+		for (a = 0, c = 0; str[a]; a++)
 		{
-			if (str[i] != '\'' && str[i] != '\"')
+			if (str[a] != '\'' && str[a] != '\"')
 			{
-				copy[j] = str[i];
-				j++;
+				copy[c] = str[a];
+				c++;
 			}
-			if (str[i] == '=')
+			if (str[a] == '=')
 			{
-				copy[j] = '\'';
-				j++;
+				copy[c] = '\'';
+				c++;
 			}
 		}
-		copy[j++] = '\'';
-		copy[j] = '\0';
+		copy[c++] = '\'';
+		copy[c] = '\0';
 		return (_strdup(copy));
 	}
 	return (NULL);
@@ -131,25 +131,25 @@ char *storeAlias(char *str)
  */
 void subAlias(inputs_s *vars)
 {
-	size_t i = 0, j = 0, k = 0, len = 0;
+	size_t a = 0, c = 0, b = 0, len = 0;
 	char alias_copy[1024];
 
 	len = _strlen(vars->av[0]);
-	while (vars->aliases != NULL && vars->aliases[i] != NULL)
+	while (vars->aliases != NULL && vars->aliases[a] != NULL)
 	{
-		if (check_name_similarity(vars->aliases[i], vars->av[0]))
+		if (check_name_similarity(vars->aliases[a], vars->av[0]))
 		{
-			for (j = len, k = 0; vars->aliases[i][j]; j++)
+			for (c = len, b = 0; vars->aliases[a][c]; c++)
 			{
-				if (vars->aliases[i][j] == '=' || vars->aliases[i][j] == '\'')
+				if (vars->aliases[a][c] == '=' || vars->aliases[a][c] == '\'')
 					continue;
 				else
 				{
-					alias_copy[k] = vars->aliases[i][j];
-					k++;
+					alias_copy[b] = vars->aliases[a][c];
+					b++;
 				}
 			}
-			alias_copy[k] = '\0';
+			alias_copy[b] = '\0';
 			free(vars->av[0]);
 			vars->av[0] = malloc(sizeof(char) * _strlen(alias_copy) + 1);
 			if (vars->av[0] == NULL)
@@ -161,6 +161,6 @@ void subAlias(inputs_s *vars)
 			subAlias(vars);
 			return;
 		}
-		i++;
+		a++;
 	}
 }
