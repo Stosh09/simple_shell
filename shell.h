@@ -122,10 +122,10 @@ int _setenv2(inputs_s *args, const char *name, const char *val, int o_write);
 char *_getenv(inputs_s *vars, const	char *name);
 
 /* m_alias.c file */
-int check_name_match(char *an_alias, char *input);
-void update_alias(inputs_s *vars, unsigned int k);
-void _alias(inputs_s *vars);
-char *store_alias(char *str);
-void sub_alias(inputs_s *vars);
+int check_name_similarity(char *an_alias, char *input);
+void updateAlias(inputs_s *vars, unsigned int k);
+void alias(inputs_s *vars);
+char *storeAlias(char *str);
+void subAlias(inputs_s *vars);
 
 #endif /*SHELL_H*/
