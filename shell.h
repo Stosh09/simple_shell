@@ -79,8 +79,8 @@ int charFound(char c, const char *del);
 char *aliasStrtok(char *str, const char *del);
 
 /* m_echo.c files */
-void sub_env(inputs_s *vars);
-void free_av_and_alias(char **s);
+void subEnv(inputs_s *vars);
+void freeAvandAlias(char **s);
 
 /* m_realloc.c files*/
 char **_realloc(char **ptr, size_t old_size, size_t new_size);
