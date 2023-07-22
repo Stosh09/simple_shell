@@ -116,8 +116,8 @@ int _atoi(char *str);
 int _chrcmp(char a, char b);
 
 /* m_cd.c files */
-void _cd(inputs_s *vars);
-void change_dir(inputs_s *args, char *pathname);
+void cd_command(inputs_s *vars);
+void changeofDirectory(inputs_s *args, char *path_name);
 int _setenv2(inputs_s *args, const char *name, const char *val, int o_write);
 char *_getenv(inputs_s *vars, const	char *name);
 
