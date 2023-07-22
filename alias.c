@@ -15,7 +15,7 @@ void alias(inputs_s *vars)
 		while (vars->av[k])
 		{
 			if (strchr(vars->av[k], '=') != NULL)
-				update_alias(vars, k);
+				updateAlias(vars, k);
 			else
 			{
 				while (vars->aliases[i])
@@ -75,7 +75,7 @@ void updateAlias(inputs_s *vars, unsigned int k)
 			if (check_name_similarity(vars->aliases[i], vars->aliases[k]))
 			{
 				free(vars->aliases[i]);
-				vars->aliases[i] = store_alias(vars->av[k]);
+				vars->aliases[i] = storeAlias(vars->av[k]);
 				return;
 			}
 			i++;
@@ -87,7 +87,7 @@ void updateAlias(inputs_s *vars, unsigned int k)
 		perror("Error");
 		exit(1);
 	}
-	vars->aliases[i] = store_alias(vars->av[k]);
+	vars->aliases[i] = storeAlias(vars->av[k]);
 	i++;
 	vars->aliases[i] = NULL;
 }
