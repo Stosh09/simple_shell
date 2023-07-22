@@ -20,7 +20,7 @@ void alias(inputs_s *vars)
 			{
 				while (vars->aliases[i])
 				{
-					if (check_name_match(vars->aliases[i], vars->av[k]))
+					if (check_name_similarity(vars->aliases[i], vars->av[k]))
 					{
 						_puts(vars->aliases[i]);
 						_puts("\n");
@@ -72,7 +72,7 @@ void updateAlias(inputs_s *vars, unsigned int k)
 	{
 		while (vars->aliases[i])
 		{
-			if (check_name_match(vars->aliases[i], vars->aliases[k]))
+			if (check_name_similarity(vars->aliases[i], vars->aliases[k]))
 			{
 				free(vars->aliases[i]);
 				vars->aliases[i] = store_alias(vars->av[k]);
@@ -137,7 +137,7 @@ void subAlias(inputs_s *vars)
 	len = _strlen(vars->av[0]);
 	while (vars->aliases != NULL && vars->aliases[i] != NULL)
 	{
-		if (check_name_match(vars->aliases[i], vars->av[0]))
+		if (check_name_similarity(vars->aliases[i], vars->av[0]))
 		{
 			for (j = len, k = 0; vars->aliases[i][j]; j++)
 			{
