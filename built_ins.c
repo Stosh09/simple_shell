@@ -15,7 +15,7 @@ int exeBuiltin(inputs_s *vars)
 		{"setenv", _setenv},
 		{"unsetenv", _unsetenv},
 		{"cd", _cd},
-		{"alias", _alias},
+		{"alias", alias},
 		{NULL, NULL}
 	};
 
@@ -55,7 +55,7 @@ void myExit(inputs_s *vars)
 		}
 		vars->status = status;
 	}
-	free_commands(vars);
+	freesCommands(vars);
 	exit(vars->status);
 }
 
@@ -93,7 +93,7 @@ void _setenv(inputs_s *vars)
 		if (var == NULL)
 		{
 			print_error(vars, NULL);
-			free_commands(vars);
+			freesCommands(vars);
 			exit(127);
 		}
 		free(*key);
