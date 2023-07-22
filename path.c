@@ -13,7 +13,7 @@ int executeCommand(char *cmd, inputs_s *vars)
 	struct stat buf;
 	pid_t child_pid;
 
-	if (stat(cmd, X_OK) == 0)
+	if (stat(cmd, &buf) == 0)
 	{
 		if (access(cmd, X_OK) == 0)
 		{
