@@ -100,8 +100,8 @@ void _setenv(inputs_s *vars);
 void _unsetenv(inputs_s *vars);
 
 /* m_path.c files */
-void get_path(inputs_s *vars);
-int execute_cmd(char *command, inputs_s *args);
+void getPath(inputs_s *vars);
+int executeCommand(char *cmd, inputs_s *args);
 
 /* m_print.c files */
 void print_error(inputs_s *vars, char *msg);
