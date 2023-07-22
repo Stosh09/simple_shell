@@ -75,8 +75,8 @@ char *_strcpy(char *dest, char *src);
 /* m_get_commands.c files */
 char **getCommand(char *buffer, char *delim);
 char **getAlias(char *buffer, char *delim);
-int char_found(char c, const char *del);
-char *alias_strtok(char *str, const char *del);
+int charFound(char c, const char *del);
+char *aliasStrtok(char *str, const char *del);
 
 /* m_echo.c files */
 void sub_env(inputs_s *vars);

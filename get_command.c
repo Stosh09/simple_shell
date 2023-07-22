@@ -60,7 +60,7 @@ char **getAlias(char *input, char *delim)
 		perror("Error");
 		return (NULL);
 	}
-	token[i] = alias_strtok(input, delim);
+	token[i] = aliasStrtok(input, delim);
 	while (token[i])
 	{
 		i++;
@@ -73,18 +73,18 @@ char **getAlias(char *input, char *delim)
 				return (NULL);
 			}
 		}
-		token[i] = alias_strtok(NULL, delim);
+		token[i] = aliasStrtok(NULL, delim);
 	}
 	return (token);
 }
 
 /**
- * alias_strtok - my custom use of strtok function
+ * aliasStrtok - my custom use of strtok function
  * @str: the string to be parsed
  * @del: end of word delimeters
  * Return: pointer to start of word, or NULL
  */
-char *alias_strtok(char *str, const char *del)
+char *aliasStrtok(char *str, const char *del)
 {
 	char *token = NULL;
 	static size_t start_index, len;
@@ -99,11 +99,11 @@ char *alias_strtok(char *str, const char *del)
 	/*get the start of the word being tokenized*/
 	while (s[start_index])
 	{
-		if (char_found(s[start_index], del) == -1)
+		if (charFound(s[start_index], del) == -1)
 		{
 			token = &s[start_index];
-			if (char_found('\'', &s[start_index]) != -1)
-				comma = start_index + char_found('\'', &s[start_index]);
+			if (charFound('\'', &s[start_index]) != -1)
+				comma = start_index + charFound('\'', &s[start_index]);
 			break;
 		}
 		start_index++;
@@ -115,25 +115,25 @@ char *alias_strtok(char *str, const char *del)
 	/*get the end of the word being tokenized*/
 	while (s[start_index])
 	{
-		if (char_found(s[start_index], del) != -1)
+		if (charFound(s[start_index], del) != -1)
 			break;
 		start_index++;
 	}
 	if (comma && start_index > comma)
-		start_index = comma + char_found('\'', &s[comma + 1]) + 2;
+		start_index = comma + charFound('\'', &s[comma + 1]) + 2;
 	s[start_index] = '\0';
 	start_index += (start_index < len) ? 1 : 0;
 	return (token);
 }
 
 /**
- * char_found - returns index of 1st instance of a char in a string
+ * charFound - returns index of 1st instance of a char in a string
  * @c: char to to search
  * @del: string of characters to search c in
  * Return: index of 1st instance, -1 otherwise
  */
 
-int char_found(char c, const char *del)
+int charFound(char c, const char *del)
 {
 	int j = 0;
 
@@ -142,5 +142,5 @@ int char_found(char c, const char *del)
 		if (c == del[j])
 			return (j);
 	}
-	return (-1); /*return -1 incase character isn't found*/
+	return (-1);
 }
