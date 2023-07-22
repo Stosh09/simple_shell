@@ -10,43 +10,43 @@
 
 int executeCommand(char *cmd, inputs_s *vars)
 {
-    struct stat buf;
-    pid_t child_pid;
+	struct stat buf;
+	pid_t child_pid;
 
-    if (stat(cmd, X_OK) == 0)
-    {
-        if (access(cmd, X_OK) == 0)
-        {
-            child_pid = fork();
-            if (child_pid == -1)
-                print_error(vars, NULL);
-            if (child_pid == 0)
-            {
-                if (execve(cmd, vars->av, vars->env) == -1)
-                    print_error(vars, NULL);
-            }
-            else
-            {
-                wait(&vars->status);
-                if (WIFEXITED(vars->status))
-                    vars->status = WEXITSTATUS(vars->status);
-                else if (WIFSIGNALED(vars->status) && WTERMSIG(vars->status) == SIGINT)
-                    vars->status = 130;
-                return (0);
-            }
-            vars->status = 127;
-            return (1);
-        }
-        else
-        {
-            print_error(vars, ": You do not have the necessary permission");
-            vars->status = 126;
-        }
-        return (0);
-    }
-    print_error(vars, ": Command not found");
-    vars->status = 127;
-    return (0);
+	if (stat(cmd, X_OK) == 0)
+	{
+		if (access(cmd, X_OK) == 0)
+		{
+			child_pid = fork();
+			if (child_pid == -1)
+				print_error(vars, NULL);
+			if (child_pid == 0)
+			{
+				if (execve(cmd, vars->av, vars->env) == -1)
+					print_error(vars, NULL);
+			}
+			else
+			{
+				wait(&vars->status);
+				if (WIFEXITED(vars->status))
+					vars->status = WEXITSTATUS(vars->status);
+				else if (WIFSIGNALED(vars->status) && WTERMSIG(vars->status) == SIGINT)
+					vars->status = 130;
+				return (0);
+			}
+			vars->status = 127;
+			return (1);
+		}
+		else
+		{
+			print_error(vars, ": You do not have the necessary permission");
+			vars->status = 126;
+		}
+		return (0);
+	}
+	print_error(vars, ": Command not found");
+	vars->status = 127;
+	return (0);
 }
 
 /**
@@ -58,41 +58,41 @@ int executeCommand(char *cmd, inputs_s *vars)
 
 void getPath(inputs_s *vars)
 {
-    char *path = getenv("PATH");
-    char *cmd = vars->av[0];
-    char *cmd_path = NULL;
-    char *token;
-    struct stat buf;
-    char *path_copy;
+	char *path = getenv("PATH");
+	char *cmd = vars->av[0];
+	char *cmd_path = NULL;
+	char *token;
+	struct stat buf;
+	char *path_copy;
 
-    if (strchr(cmd, '/') != NULL)
-    {
-        if (stat(cmd, &buf) == 0 && access(cmd, X_OK) == 0)
-        {
-            executeCommand(cmd, vars);
-            return;
-        }
-    }
-    else if (path != NULL)
-    {
-        path_copy = _strdup(path);
-        token = _strtok(path_copy, ":");
-        while (token != NULL)
-        {
-            cmd_path = malloc(strlen(token) + strlen(cmd) + 2);
-            sprintf(cmd_path, "%s/%s", token, cmd);
-            if (stat(cmd_path, &buf) == 0 && access(cmd_path, X_OK) == 0)
-            {
-                executeCommand(cmd_path, vars);
-                free(cmd_path);
-                free(path_copy);
-                return;
-            }
-            free(cmd_path);
-            token = _strtok(NULL, ":");
-        }
-        free(path_copy);
-    }
-    print_error(vars, ": Command not found");
-    vars->status = 127;
+	if (strchr(cmd, '/') != NULL)
+	{
+		if (stat(cmd, &buf) == 0 && access(cmd, X_OK) == 0)
+		{
+			executeCommand(cmd, vars);
+			return;
+		}
+	}
+	else if (path != NULL)
+	{
+		path_copy = _strdup(path);
+		token = _strtok(path_copy, ":");
+		while (token != NULL)
+		{
+			cmd_path = malloc(strlen(token) + strlen(cmd) + 2);
+			sprintf(cmd_path, "%s/%s", token, cmd);
+			if (stat(cmd_path, &buf) == 0 && access(cmd_path, X_OK) == 0)
+			{
+				executeCommand(cmd_path, vars);
+				free(cmd_path);
+				free(path_copy);
+				return;
+			}
+			free(cmd_path);
+			token = _strtok(NULL, ":");
+		}
+		free(path_copy);
+	}
+	print_error(vars, ": Command not found");
+	vars->status = 127;
 }
