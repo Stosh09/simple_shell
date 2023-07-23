@@ -65,7 +65,7 @@ void addKey(inputs_s *vars)
 	newenv = malloc(sizeof(char *) * (a + 2));
 	if (newenv == NULL)
 	{
-		print_error(vars, NULL);
+		printError(vars, NULL);
 		vars->status = 127;
 		myExit(vars);
 	}
@@ -78,7 +78,7 @@ void addKey(inputs_s *vars)
 	newenv[a] = addValue(vars->av[1], vars->av[2]);
 	if (newenv[a] == NULL)
 	{
-		print_error(vars, NULL);
+		printError(vars, NULL);
 		freesCommands(vars);
 		free(newenv);
 		exit(127);

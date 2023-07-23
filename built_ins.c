@@ -46,7 +46,7 @@ void myExit(inputs_s *vars)
 		if (status == -1)
 		{
 			vars->status = 2;
-			print_error(vars, ": Incorrect number: ");
+			printError(vars, ": Incorrect number: ");
 			_puts2(vars->av[1]);
 			_puts2("\n");
 			free(vars->commands);
@@ -80,7 +80,7 @@ void _setenv(inputs_s *vars)
 
 	if (vars->av[1] == NULL || vars->av[2] == NULL)
 	{
-		print_error(vars, ": Wrong count of arguments\n");
+		printError(vars, ": Wrong count of arguments\n");
 		vars->status = 2;
 		return;
 	}
@@ -92,7 +92,7 @@ void _setenv(inputs_s *vars)
 		var = addValue(vars->av[1], vars->av[2]);
 		if (var == NULL)
 		{
-			print_error(vars, NULL);
+			printError(vars, NULL);
 			freesCommands(vars);
 			exit(127);
 		}
@@ -114,14 +114,14 @@ void _unsetenv(inputs_s *vars)
 
 	if (vars->av[1] == NULL)
 	{
-		print_error(vars, ": Wrong count of arguments\n");
+		printError(vars, ": Wrong count of arguments\n");
 		vars->status = 2;
 		return;
 	}
 	key = findKey(vars->env, vars->av[1]);
 	if (key == NULL)
 	{
-		print_error(vars, ": No variable to unset\n");
+		printError(vars, ": No variable to unset\n");
 		return;
 	}
 	for (k = 0; vars->env[k] != NULL; k++)
@@ -129,7 +129,7 @@ void _unsetenv(inputs_s *vars)
 	newenv = malloc(sizeof(char *) * k);
 	if (newenv == NULL)
 	{
-		print_error(vars, NULL);
+		printError(vars, NULL);
 		vars->status = 127;
 		myExit(vars);
 	}
