@@ -19,11 +19,11 @@ int executeCommand(char *cmd, inputs_s *vars)
 		{
 			child_pid = fork();
 			if (child_pid == -1)
-				print_error(vars, NULL);
+				printError(vars, NULL);
 			if (child_pid == 0)
 			{
 				if (execve(cmd, vars->av, vars->env) == -1)
-					print_error(vars, NULL);
+					printError(vars, NULL);
 			}
 			else
 			{
@@ -39,12 +39,12 @@ int executeCommand(char *cmd, inputs_s *vars)
 		}
 		else
 		{
-			print_error(vars, ": You do not have the necessary permission");
+			printError(vars, ": You do not have the necessary permission");
 			vars->status = 126;
 		}
 		return (0);
 	}
-	print_error(vars, ": Command not found");
+	printError(vars, ": Command not found");
 	vars->status = 127;
 	return (0);
 }
@@ -93,6 +93,6 @@ void getPath(inputs_s *vars)
 		}
 		free(path_copy);
 	}
-	print_error(vars, ": Command not found");
+	printError(vars, ": Command not found");
 	vars->status = 127;
 }

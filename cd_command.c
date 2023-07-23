@@ -35,13 +35,13 @@ void cd_command(inputs_s *vars)
 			changeofDirectory(vars, path_name);
 		else
 		{
-			print_error2(vars, "cannot cd to ");
+			printError2(vars, "cannot cd to ");
 			vars->status = 2;
 		}
 	}
 	else
 	{
-		print_error2(vars, "cannot cd to ");
+		printError2(vars, "cannot cd to ");
 		vars->status = 2;
 	}
 	free(path_name);
@@ -62,14 +62,14 @@ void changeofDirectory(inputs_s *vars, char *path_name)
 
 	if (access(path_name, R_OK) == -1)
 	{
-		print_error2(vars, "cannot cd to ");
+		printError2(vars, "cannot cd to ");
 		vars->status = 2;
 		return;
 	}
 
 	if (chdir(path_name) == -1)
 	{
-		print_error(vars, NULL);
+		printError(vars, NULL);
 		return;
 	}
 	_setenv2(vars, "OLD_PWD", init_pwd, 1);

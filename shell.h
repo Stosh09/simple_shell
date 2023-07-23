@@ -104,10 +104,10 @@ void getPath(inputs_s *vars);
 int executeCommand(char *cmd, inputs_s *args);
 
 /* m_print.c files */
-void print_error(inputs_s *vars, char *msg);
+void printError(inputs_s *vars, char *message);
 ssize_t _puts(char *str);
 void _puts2(char *str);
-void print_error2(inputs_s *vars, char *msg);
+void printError2(inputs_s *vars, char *message);
 void printsPrompt(void);
 
 /* m_char_conversion.c*/
