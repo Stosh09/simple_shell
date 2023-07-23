@@ -47,8 +47,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	if (term)
 		_puts("\n");
 
+	freeAvandAlias((&vars)->aliases);
 	freeEnvironment(vars.env);
-	free_av_and_alias((&vars)->aliases);
 	free(vars.buffer);
 	exit(vars.status);
 }
@@ -64,8 +64,9 @@ void freesCommands(inputs_s *vars)
 	free(vars->commands);
 	free(vars->str_cmd);
 	free(vars->ops_cmd);
-	free_av_and_alias(vars->av);
-	freeEnvironment(vars->env);
-	free_av_and_alias(vars->aliases);
+	freeAvandAlias(vars->av);
+	free_env(vars->env);
+	freeAvandAlias(vars->aliases);
+
 }
 
