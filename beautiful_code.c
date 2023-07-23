@@ -1,16 +1,14 @@
-#include <stdio.h>
-
 /**
- * main -simple program passing betty checks
- * Return: Always 0 (Success)
- */
-int main(void)
+ * compare - compares two numbers and returns the largest
+ * @x: 1st number
+ * @y: 2nd number
+ * Return: the largest number
+*/
+int compare(int x, int y)
 {
-	int i = 0;
-
-	for (; i < 10; i++)
+	if (x > y)
 	{
-		printf("%d\n", i);
+		return (x);
 	}
-	return (0);
+	return (y);
 }
