@@ -68,8 +68,8 @@ unsigned int _strlen(char *str);
 void print_vars(char **str);
 
 /* m_strtok.c files */
-char *_strtok(char *str, const char *delim);
-unsigned int check_match(char c, const char *str);
+char *_strtok(char *string, const char *delim);
+unsigned int checkMatch(char c, const char *string);
 char *_strcpy(char *dest, char *src);
 
 /* m_get_commands.c files */
