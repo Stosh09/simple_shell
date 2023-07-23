@@ -65,7 +65,7 @@ void freesCommands(inputs_s *vars)
 	free(vars->str_cmd);
 	free(vars->ops_cmd);
 	freeAvandAlias(vars->av);
-	free_env(vars->env);
+	freeEnvironment(vars->env);
 	freeAvandAlias(vars->aliases);
 
 }
