@@ -8,7 +8,7 @@
 /*void (*check_for_builtins(inputs_s *vars))(inputs_s *vars)*/
 int exeBuiltin(inputs_s *vars)
 {
-	unsigned int k = 0;
+	unsigned int a = 0;
 	builtin_s built_in[] = {
 		{"exit", myExit},
 		{"env", _env},
@@ -19,14 +19,14 @@ int exeBuiltin(inputs_s *vars)
 		{NULL, NULL}
 	};
 
-	while (built_in[k].f)
+	while (built_in[a].f)
 	{
-		if (_strcmp(vars->av[0], built_in[k].name) == 0)
+		if (_strcmp(vars->av[0], built_in[a].name) == 0)
 		{
-			built_in[k].f(vars);
+			built_in[a].f(vars);
 			return (0);
 		}
-		k++;
+		a++;
 	}
 	return (1);
 }
@@ -110,7 +110,7 @@ void _unsetenv(inputs_s *vars)
 {
 	char **key, **newenv;
 
-	unsigned int k, j;
+	unsigned int a, b;
 
 	if (vars->av[1] == NULL)
 	{
@@ -124,20 +124,20 @@ void _unsetenv(inputs_s *vars)
 		printError(vars, ": No variable to unset\n");
 		return;
 	}
-	for (k = 0; vars->env[k] != NULL; k++)
+	for (a = 0; vars->env[a] != NULL; a++)
 		;
-	newenv = malloc(sizeof(char *) * k);
+	newenv = malloc(sizeof(char *) * a);
 	if (newenv == NULL)
 	{
 		printError(vars, NULL);
 		vars->status = 127;
 		myExit(vars);
 	}
-	for (k = 0; vars->env[k] != *key; k++)
-		newenv[k] = vars->env[k];
-	for (j = k + 1; vars->env[j] != NULL; j++, k++)
-		newenv[k] = vars->env[j];
-	newenv[k] = NULL;
+	for (a = 0; vars->env[a] != *key; a++)
+		newenv[a] = vars->env[a];
+	for (b = a + 1; vars->env[b] != NULL; b++, a++)
+		newenv[a] = vars->env[b];
+	newenv[a] = NULL;
 	free(*key);
 	free(vars->env);
 	vars->env = newenv;
