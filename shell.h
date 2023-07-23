@@ -83,7 +83,7 @@ void subEnv(inputs_s *vars);
 void freeAvandAlias(char **s);
 
 /* m_realloc.c files*/
-char **_realloc(char **ptr, size_t old_size, size_t new_size);
+char **_realloc(char **ptr, size_t init_size, size_t current_size);
 char *_malloc(size_t size);
 
 /* m_process.c file */
