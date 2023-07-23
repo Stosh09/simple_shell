@@ -88,9 +88,9 @@ char *_malloc(size_t size);
 
 /* m_process.c file */
 void processInput(char *input, inputs_s *vars);
-int run_command(inputs_s *vars, char *cmd_str);
-char get_operator(char *command, unsigned int *index);
-void check_logical_ops(inputs_s *vars, char *cmd_str);
+int runCommand(inputs_s *vars, char *cmd_str);
+char getOperator(char *command, unsigned int *index);
+void checkLogicalOperator(inputs_s *vars, char *cmd_str);
 
 /* m_builtins.c files */
 int exeBuiltin(inputs_s *vars);
