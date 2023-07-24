@@ -65,7 +65,7 @@ void myExit(inputs_s *vars)
  */
 void _env(inputs_s *vars)
 {
-	print_vars(vars->env);
+	printVars(vars->env);
 	vars->status = 0;
 }
 

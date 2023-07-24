@@ -107,7 +107,7 @@ unsigned int _strlen(char *string)
  * print_vars - does the printing of variables
  * @variable: variable being printed
  */
-void print_vars(char **variable)
+void printVars(char **variable)
 {
 	unsigned int j = 0;
 

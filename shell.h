@@ -65,7 +65,7 @@ char *_strdup(char *strtodup);
 int _strcmp(char *strcmp1, char *strcmp2);
 char *_strcat(char *strc1, char *strc2);
 unsigned int _strlen(char *str);
-void print_vars(char **str);
+void printVars(char **str);
 
 /* m_strtok.c files */
 char *_strtok(char *string, const char *delim);

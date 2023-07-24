@@ -9,7 +9,7 @@ void alias(inputs_s *vars)
 	unsigned int a = 0, b = 0;
 
 	if (vars->av[1] == NULL)
-		print_vars(vars->aliases);
+		printVars(vars->aliases);
 	else
 	{
 		while (vars->av[b])
