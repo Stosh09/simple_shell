@@ -13,17 +13,17 @@
 #include <string.h>
 
 /**
- * struct inputs - variables
- * @av: command line arguments
- * @buffer: buffer of command
- * @env: environment variables
- * @count: count of commands entered
- * @argv: arguments at opening of shell
+ * struct inputs - the various variables
+ * @status: status of exit
+ * @str_cmd: individual commands duplicates separated by ;
+ * @ops_cmd: command strings delimited by logical operators
+ * @aliases: it has alias commans
+ * @av: command line args
+ * @count: the count of entered commands
+ * @argv: args @ opening of shell
  * @commands: commands to be executed
- * @status: exit status
- * @str_cmd: copy of individual commands separated by ;
- * @ops_cmd: string of commands separated by logical operators
- * @aliases: contains the alias commands
+ * @buffer: command buffer
+ * @env: variables used in environment
  */
 
 typedef struct inputs
