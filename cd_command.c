@@ -6,14 +6,14 @@
  */
 void cd_command(inputs_s *vars)
 {
-	char *home_directory = _getenv(vars, "HOME"), *path_name = NULL, *pwd = NULL;
+	char *home_directory = getEnv(vars, "HOME"), *path_name = NULL, *pwd = NULL;
 	struct stat sb_var;
 
 	if (vars->av[1] == NULL || vars->av[1][0] == '\0')
 		path_name = home_directory ? _strdup(home_directory) : getcwd(path_name, 0);
 	else if (_strcmp(vars->av[1], "-") == 0)
 	{
-		path_name = (_getenv(vars, "OLDPWD")) ? _strdup(_getenv(vars, "OLDPWD")) :
+		path_name = (getEnv(vars, "OLDPWD")) ? _strdup(getEnv(vars, "OLDPWD")) :
 					getcwd(path_name, 0);
 		_puts(path_name);
 		_puts("\n");
@@ -72,22 +72,22 @@ void changeofDirectory(inputs_s *vars, char *path_name)
 		printError(vars, NULL);
 		return;
 	}
-	_setenv2(vars, "OLD_PWD", init_pwd, 1);
-	_setenv2(vars, "PWD", path_name, 1);
+	setEnv2(vars, "OLD_PWD", init_pwd, 1);
+	setEnv2(vars, "PWD", path_name, 1);
 	free(init_pwd);
 	init_pwd = NULL;
 	vars->status = 0;
 }
 
 /**
- * _setenv2 - adds and changes environment variable
+ * setEnv2 - adds and changes environment variable
  * @name: variable
  * @val: variable value
  * @o_write: flag determining value change of existing varable
  * @vars: variables being keyed in
  * Return: returns 0 on success and -1 on failure
  */
-int _setenv2(inputs_s *vars, const char *name, const char *val, int o_write)
+int setEnv2(inputs_s *vars, const char *name, const char *val, int o_write)
 {
 	size_t i = 0;
 	char *new_envr = NULL;
@@ -132,12 +132,12 @@ int _setenv2(inputs_s *vars, const char *name, const char *val, int o_write)
 
 
 /**
-  * _getenv - it gets the value of environment variable
+  * getEnv - it gets the value of environment variable
   * @vars: variables
   * @name: the environment variable being searched
   * Return: value of success and null on failure
   */
-char *_getenv(inputs_s *vars, const char *name)
+char *getEnv(inputs_s *vars, const char *name)
 {
 	int i = 0;
 	char *the_value = NULL;

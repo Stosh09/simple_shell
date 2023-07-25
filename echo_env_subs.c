@@ -28,7 +28,7 @@ void subEnv(inputs_s *vars)
 		else if (copy_av[k][0] == '$' && copy_av[k][1] != '\0')
 		{
 			path = &(copy_av[k][1]);
-			env = _getenv(vars, path);
+			env = getEnv(vars, path);
 			if (env)
 				vars->av[k] = _strdup(env);
 			else

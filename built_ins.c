@@ -11,9 +11,9 @@ int exeBuiltin(inputs_s *vars)
 	unsigned int a = 0;
 	builtin_s built_in[] = {
 		{"exit", myExit},
-		{"env", _env},
-		{"setenv", _setenv},
-		{"unsetenv", _unsetenv},
+		{"env", env},
+		{"setenv", setEnv},
+		{"unsetenv", unSetEnv},
 		{"cd", cd_command},
 		{"alias", alias},
 		{NULL, NULL}
@@ -60,20 +60,20 @@ void myExit(inputs_s *vars)
 }
 
 /**
- * _env - it prints current environment
+ * env - it prints current environment
  * @vars: variables
  */
-void _env(inputs_s *vars)
+void env(inputs_s *vars)
 {
 	printVars(vars->env);
 	vars->status = 0;
 }
 
 /**
- * _setenv - it either creates/edits an environment variable
+ * setEnv - it either creates/edits an environment variable
  * @vars: variables
  */
-void _setenv(inputs_s *vars)
+void setEnv(inputs_s *vars)
 {
 	char **key;
 	char *var;
@@ -103,10 +103,10 @@ void _setenv(inputs_s *vars)
 }
 
 /**
- * _unsetenv - it removes environment variable
+ * unSetEnv - it removes environment variable
  * @vars: variables
  */
-void _unsetenv(inputs_s *vars)
+void unSetEnv(inputs_s *vars)
 {
 	char **key, **newenv;
 
