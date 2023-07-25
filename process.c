@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * process_input - process the user input
+ * processInput - process the user input
  * @input: user input to process
  * @vars: shell variables
  */
@@ -26,7 +26,7 @@ void processInput(char *input, inputs_s *vars)
 }
 
 /**
- * check_logical_ops - executes according to logical operators
+ * checkLogicalOperator - executes according to logical operators
  * @vars: input variables struct
  * @cmd_str: current command
  */
@@ -71,7 +71,7 @@ void checkLogicalOperator(inputs_s *vars, char *cmd_str)
 }
 
 /**
- * run_command - gets command with arguments and calls executing function
+ * runCommand - gets command with arguments and calls executing function
  * @vars: input variables struct
  * @cmd_str: current command
  * Return: status after execution
@@ -98,7 +98,7 @@ int runCommand(inputs_s *vars, char *cmd_str)
 }
 
 /**
- * get_operator - check for logical operators in a line of command
+ * getOperator - check for logical operators in a line of command
  * @command: current command
  * @index: pointer to the logical operator index in command string
  * Return: the type of logical operator

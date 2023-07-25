@@ -45,6 +45,7 @@ void freeEnvironment(char **env)
 
 	while (env[a])
 		free(env[a++]);
+
 	free(env);
 }
 
@@ -69,12 +70,14 @@ void addKey(inputs_s *vars)
 		vars->status = 127;
 		myExit(vars);
 	}
+
 	a = 0;
 	while (vars->env[a])
 	{
 		newenv[a] = vars->env[a];
 		a++;
 	}
+
 	newenv[a] = addValue(vars->av[1], vars->av[2]);
 	if (newenv[a] == NULL)
 	{
@@ -83,6 +86,7 @@ void addKey(inputs_s *vars)
 		free(newenv);
 		exit(127);
 	}
+
 	newenv[a + 1] = NULL;
 	free(vars->env);
 	vars->env = newenv;
@@ -109,6 +113,7 @@ char **findKey(char **env, char *key)
 		if (b == len && env[a][b] == '=')
 			return (&env[a]);
 	}
+
 	return (NULL);
 }
 
@@ -116,7 +121,6 @@ char **findKey(char **env, char *key)
  * addValue - create a new environment variable string
  * @key: variable name
  * @val: variable value
- *
  * Return: pointer to the new string;
  */
 
@@ -136,9 +140,11 @@ char *addValue(char *key, char *val)
 		new[a] = key[a];
 		a++;
 	}
+
 	new[a] = '=';
 	for (b = 0; val[b] != '\0'; b++)
 		new[a + 1 + b] = val[b];
 	new[a + 1 + b] = '\0';
+
 	return (new);
 }

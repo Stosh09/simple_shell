@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * executeCommand - function that executes command
+ * executeCommand - function to execute command
  * @cmd: command to execute
  * @vars: pointer to struct of variables
  *
@@ -50,7 +50,7 @@ int executeCommand(char *cmd, inputs_s *vars)
 }
 
 /**
- * getPath - checks if the command is the PATH or current dir
+ * getPath - checks if command is in the PATH or current dir
  * @vars: variables struct
  *
  * Return: void

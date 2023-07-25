@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * print_vars - does the printing of variables
+ * printVars - does the printing of variables
  * @variable: variable being printed
  */
 void printVars(char **variable)
